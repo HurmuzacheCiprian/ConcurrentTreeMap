@@ -19,38 +19,38 @@ public interface TreeOperations {
 	 * 
 	 * @param node
 	 */
-	public <E, T extends TreeNode<E>> void insert(T node);
+	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> void insert(T node);
 
 	/**
 	 * Method that deletes a node from a Tree
 	 * 
 	 * @param node
 	 */
-	public <E, T extends TreeNode<E>> void delete(T node);
+	public <K extends Comparable<K>,E, T extends TreeNode<K,E>> void delete(T node);
 
 	/**
 	 * Method that searches for a node nased on a key
 	 * 
 	 * @param key
 	 */
-	public <E, T extends TreeNode<E>> TreeNode<E> search(int key);
+	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E search(int key);
 
 	/**
 	 * Method that searches for a node and updates it
 	 * 
 	 * @param node
 	 */
-	public <E, T extends TreeNode<E>> void update(T node, T newNode);
+	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> void update(T node, T newNode);
 	
 	/**
 	 * Method that returns the maximum key from the tree
 	 * @return
 	 */
-	public <E, T extends TreeNode<E>> TreeNode<E> getMaxKey();
+	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E getMaxKey();
 	
 	/**
 	 * Method that returns the minimum key from the tree
 	 * @return
 	 */
-	public <E, T extends TreeNode<E>> TreeNode<E> getMinKey();
+	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E getMinKey();
 }

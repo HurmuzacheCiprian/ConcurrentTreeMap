@@ -1,6 +1,5 @@
 package ro.ciprian.presentation.interfaces;
 
-import ro.ciprian.presentation.model.TreeNode;
 
 /**
  * 
@@ -9,7 +8,8 @@ import ro.ciprian.presentation.model.TreeNode;
  * @author Ciprian-Constantin Hurmuzache (ciprian.hurmuzache@1and1.ro)
  *
  */
-public interface TreeMapOperations extends TreeOperations {
+public interface TreeMapOperations<K extends Comparable<K>, V> extends
+		TreeOperations {
 
 	/**
 	 * Method that puts an element E into a tree map based on the key K index
@@ -17,8 +17,7 @@ public interface TreeMapOperations extends TreeOperations {
 	 * @param key
 	 * @param element
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<E>> void put(K key,
-			E element);
+	public void put(K key, V element);
 
 	/**
 	 * Method that returns a TreeNode based on a key
@@ -26,6 +25,5 @@ public interface TreeMapOperations extends TreeOperations {
 	 * @param key
 	 * @return
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<E>> TreeNode<E> get(
-			K key);
+	public V get(K key);
 }
