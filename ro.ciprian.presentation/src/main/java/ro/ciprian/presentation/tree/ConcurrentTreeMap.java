@@ -15,7 +15,8 @@ public class ConcurrentTreeMap<K extends Comparable<K>, V> extends AbstractTree<
 	/** The tree map **/
 	private final TreeMap<K,V> treeMap = new TreeMap<K,V>();
 	
-	private static final Object monitor = new Object();
+	/** The monitor object **/
+	private final Object monitor = new Object();
 	
 	@Override
 	public void put(K key, V element) {
