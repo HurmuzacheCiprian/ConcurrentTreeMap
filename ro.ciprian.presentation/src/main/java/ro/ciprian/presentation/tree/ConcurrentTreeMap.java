@@ -3,6 +3,8 @@
  */
 package ro.ciprian.presentation.tree;
 
+import ro.ciprian.presentation.model.TreeNode;
+
 
 /**
  * The thread safe tree map
@@ -18,6 +20,10 @@ public class ConcurrentTreeMap<K extends Comparable<K>, V> extends AbstractTree<
 	/** The monitor object **/
 	private final Object monitor = new Object();
 	
+	public ConcurrentTreeMap() {
+		
+	}
+	
 	@Override
 	public void put(K key, V element) {
 		synchronized (monitor) {
@@ -30,6 +36,11 @@ public class ConcurrentTreeMap<K extends Comparable<K>, V> extends AbstractTree<
 		synchronized (monitor) {
 			return treeMap.get(key);
 		}
+	}
+	
+	@Override
+	public <E, T extends TreeNode<K, E>> E getMaxKey() {
+		return treeMap.getMaxKey();
 	}
 	
 }
