@@ -9,7 +9,7 @@ package ro.ciprian.presentation.interfaces;
  *
  */
 public interface TreeMapOperations<K extends Comparable<K>, V> extends
-		TreeOperations {
+		TreeOperations<K,V> {
 
 	/**
 	 * Method that puts an element E into a tree map based on the key K index

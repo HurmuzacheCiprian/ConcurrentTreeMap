@@ -12,45 +12,45 @@ import ro.ciprian.presentation.model.TreeNode;
  * @author Ciprian-Constantin Hurmuzache (ciprian.hurmuzache@1and1.ro)
  *
  */
-public interface TreeOperations {
+public interface TreeOperations<K extends Comparable<K>, V> {
 
 	/**
 	 * Method that inserts a node to a Tree
 	 * 
 	 * @param node
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> void insert(T node);
+	public <E, T extends TreeNode<K,E>> void insert(T node);
 
 	/**
 	 * Method that deletes a node from a Tree
 	 * 
 	 * @param node
 	 */
-	public <K extends Comparable<K>,E, T extends TreeNode<K,E>> void delete(T node);
+	public <E, T extends TreeNode<K,E>> void delete(T node);
 
 	/**
 	 * Method that searches for a node nased on a key
 	 * 
 	 * @param key
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E search(int key);
+	public <E, T extends TreeNode<K,E>> E search(int key);
 
 	/**
 	 * Method that searches for a node and updates it
 	 * 
 	 * @param node
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> void update(T node, T newNode);
+	public <E, T extends TreeNode<K,E>> void update(T node, T newNode);
 	
 	/**
 	 * Method that returns the maximum key from the tree
 	 * @return
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E getMaxKey();
+	public <E, T extends TreeNode<K,E>> E getMaxKey();
 	
 	/**
 	 * Method that returns the minimum key from the tree
 	 * @return
 	 */
-	public <K extends Comparable<K>, E, T extends TreeNode<K,E>> E getMinKey();
+	public <E, T extends TreeNode<K,E>> E getMinKey();
 }

@@ -10,44 +10,41 @@ import ro.ciprian.presentation.model.TreeNode;
  * @author Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)
  *
  */
-public abstract class AbstractTree<K extends Comparable<K>, V> implements TreeMapOperations<K, V>{
+public abstract class AbstractTree<K extends Comparable<K>, V> implements
+		TreeMapOperations<K, V> {
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> void insert(
-			T node) {
+	public <E, T extends TreeNode<K, E>> void insert(T node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> void delete(
-			T node) {
+	public <E, T extends TreeNode<K, E>> void delete(T node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> E search(
-			int key) {
+	public <E, T extends TreeNode<K, E>> E search(int key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> void update(
-			T node, T newNode) {
+	public <E, T extends TreeNode<K, E>> void update(T node, T newNode) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> E getMaxKey() {
+	public <E, T extends TreeNode<K, E>> E getMaxKey() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <K extends Comparable<K>, E, T extends TreeNode<K, E>> E getMinKey() {
+	public <E, T extends TreeNode<K, E>> E getMinKey() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -55,7 +52,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> implements TreeMa
 	@Override
 	public void put(K key, V element) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
