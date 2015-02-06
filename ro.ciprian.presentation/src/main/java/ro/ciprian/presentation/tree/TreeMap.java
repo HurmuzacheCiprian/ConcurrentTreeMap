@@ -7,7 +7,17 @@ import ro.ciprian.presentation.model.TreeNode;
 
 /**
  * The actual implementation of the Red Black Tree based data structure as it is
- * presented in Introduction to algorithms by Thomas Cormen
+ * presented in Introduction to algorithms by Thomas Cormen.
+ * 
+ * 
+ * A red-black tree is a binary tree that satisfies the following red-black
+ * properties: <br>
+ * 1. Every node is either red or black. <br>
+ * 2. The root is black. <br>
+ * 3. Every leaf ( NIL ) is black. <br>
+ * 4. If a node is red, then both its children are black. <br>
+ * 5. For each node, all simple paths from the node to descendant leaves contain
+ * the same number of black nodes.
  * 
  * @author Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)
  *
@@ -60,11 +70,13 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 
 	/**
 	 * Insert method
+	 * 
+	 * TODO
 	 */
 	@Override
 	public void put(K key, V value) {
 		TreeNode<K, V> newNode = TreeNodeFactory.createTreeNode(value);
-
+		TreeNode<K,V> nilNode = TreeNodeFactory.createNilLeaf();
 	}
 
 	@Override

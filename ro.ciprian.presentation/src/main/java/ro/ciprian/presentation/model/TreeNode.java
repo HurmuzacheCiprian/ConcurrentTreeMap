@@ -12,8 +12,6 @@ package ro.ciprian.presentation.model;
  * <li>The color of the node</li>
  * </ul>
  * 
- * TODO SHOULD CONSIDER REFACTORING THE KEY TO MAKE IT COMPARABLE IF NECCESSARY
- * 
  * @author Ciprian-Constantin Hurmuzache (ciprian.hurmuzache@1and1.ro)
  *
  */
