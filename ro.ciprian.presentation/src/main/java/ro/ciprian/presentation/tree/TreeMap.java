@@ -121,5 +121,14 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		y.setLeftNode(x);
 		x.setParentNode(y);
 	}
+	
+	/**
+	 * Right rotate procedure 
+	 * @param T
+	 * @param y
+	 */
+	private void rightRotate(TreeMap<K,V> T, TreeNode<K,V> y) {
+		//TODO
+	}
 
 }
