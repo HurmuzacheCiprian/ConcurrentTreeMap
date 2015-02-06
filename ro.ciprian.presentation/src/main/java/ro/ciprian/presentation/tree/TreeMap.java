@@ -38,6 +38,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	 */
 	public TreeMap() {
 		nil = TreeNodeFactory.createNilLeaf();
+		nil.setParentNode(root);
 	}
 
 	/**
@@ -70,7 +71,6 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		public static <K extends Comparable<K>, E> TreeNode<K, E> createNilLeaf() {
 			TreeNode<K, E> treeNode = new TreeNode<K, E>(null);
 			treeNode.setLeftNode(null);
-			treeNode.setParentNode(null);
 			treeNode.setRightNode(null); 
 			treeNode.setColor(NodeColor.BLACK);
 			return treeNode;
