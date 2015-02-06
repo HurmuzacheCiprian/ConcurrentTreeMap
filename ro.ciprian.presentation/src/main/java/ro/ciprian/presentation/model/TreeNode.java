@@ -10,6 +10,9 @@ package ro.ciprian.presentation.model;
  * <ul>
  * <li>The key (used for insertion)</li>
  * <li>The color of the node</li>
+ * <li>The left subtree reference</li>
+ * <li>The right subtree reference</li>
+ * <li>The parent reference</li>
  * </ul>
  * 
  * @author Ciprian-Constantin Hurmuzache (ciprian.hurmuzache@1and1.ro)
@@ -73,6 +76,10 @@ public class TreeNode<K extends Comparable<K>, T> implements
 
 	public void setParentNode(TreeNode<K, T> parentNode) {
 		this.parentNode = parentNode;
+	}
+	
+	public void setColor(NodeColor color) {
+		this.color = color;
 	}
 
 	@Override

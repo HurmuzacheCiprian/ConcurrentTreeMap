@@ -3,6 +3,7 @@
  */
 package ro.ciprian.presentation.tree;
 
+import ro.ciprian.presentation.model.NodeColor;
 import ro.ciprian.presentation.model.TreeNode;
 
 /**
@@ -19,6 +20,9 @@ import ro.ciprian.presentation.model.TreeNode;
  * 5. For each node, all simple paths from the node to descendant leaves contain
  * the same number of black nodes.
  * 
+ * A sentinel node is a node which always has the BLACK color and its other
+ * attributes can take arbitrary values.
+ * 
  * @author Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)
  *
  */
@@ -26,6 +30,15 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 
 	/** The root of the tree **/
 	private TreeNode<K, V> root;
+
+	private TreeNode<K, V> nil;
+
+	/**
+	 * initialize the nil node;
+	 */
+	public TreeMap() {
+		nil = TreeNodeFactory.createNilLeaf();
+	}
 
 	/**
 	 * TreeNode factory that creates objects of type TreeNode
@@ -58,13 +71,10 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 			TreeNode<K, E> treeNode = new TreeNode<K, E>(null);
 			treeNode.setLeftNode(null);
 			treeNode.setParentNode(null);
-			treeNode.setRightNode(null);
+			treeNode.setRightNode(null); 
+			treeNode.setColor(NodeColor.BLACK);
 			return treeNode;
 		}
-
-	}
-
-	public TreeMap() {
 
 	}
 
@@ -76,7 +86,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	@Override
 	public void put(K key, V value) {
 		TreeNode<K, V> newNode = TreeNodeFactory.createTreeNode(value);
-		TreeNode<K,V> nilNode = TreeNodeFactory.createNilLeaf();
+
 	}
 
 	@Override
@@ -88,4 +98,28 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	public TreeNode<K, V> getRoot() {
 		return this.root;
 	}
+
+	/**
+	 * Left Rotate procedure
+	 * @param T
+	 * @param x
+	 */
+	private void leftRotate(TreeMap<K, V> T, TreeNode<K, V> x) {
+		TreeNode<K, V> y = x.getRightNode();
+		x.setRightNode(y.getLeftNode());
+		if (y.getLeftNode() != T.nil) {
+			y.getLeftNode().setParentNode(x);
+		}
+		y.setParentNode(x.getParentNode());
+		if(x.getParentNode() == T.nil) {
+			T.root = y;
+		}else if(x == x.getParentNode().getLeftNode()) {
+			x.getParentNode().setLeftNode(y);
+		}else {
+			x.getParentNode().setRightNode(y);
+		}
+		y.setLeftNode(x);
+		x.setParentNode(y);
+	}
+
 }
