@@ -100,7 +100,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	}
 
 	/**
-	 * Left Rotate procedure
+	 * Left Rotate procedure which runs in O(1) time
 	 * @param T
 	 * @param x
 	 */
@@ -123,12 +123,26 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	}
 	
 	/**
-	 * Right rotate procedure 
+	 * Right Rotate procedure which runs in O(1) time
 	 * @param T
 	 * @param y
 	 */
 	private void rightRotate(TreeMap<K,V> T, TreeNode<K,V> y) {
-		//TODO
+		TreeNode<K,V> x = y.getLeftNode();
+		y.setLeftNode(x.getRightNode());
+		if(x.getRightNode() != T.nil) {
+			x.getRightNode().setParentNode(y);
+		}
+		x.setParentNode(y.getParentNode());
+		if(y.getParentNode() == T.nil) {
+			T.root = x;
+		}else if(y == y.getParentNode().getLeftNode()) {
+			y.getParentNode().setLeftNode(x);
+		}else {
+			y.getParentNode().setRightNode(x);
+		}
+		x.setRightNode(y);
+		y.setParentNode(x);
 	}
 
 }
