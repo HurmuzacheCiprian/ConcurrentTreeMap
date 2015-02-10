@@ -34,11 +34,16 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	private TreeNode<K, V> nil;
 
 	/**
-	 * initialize the nil node;
+	 * Initialize the nil node. The parent of the root node must be the nil node
+	 * and viceversa, the parent of the nil node must be the root.
+	 * 
+	 * This is because the rotation procedure will check if there is a Nil
+	 * parent and if so then put the current node as the root.
 	 */
 	public TreeMap() {
 		nil = TreeNodeFactory.createNilLeaf();
 		nil.setParentNode(root);
+		root.setParentNode(nil);
 	}
 
 	/**
@@ -63,7 +68,8 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		}
 
 		/**
-		 * Method that creates a Nil leaf which is an empty TreeNode
+		 * Method that creates a Nil leaf which is an empty TreeNode. The parent
+		 * of the Nil Sentinel is the root
 		 * 
 		 * @return {@link TreeNode}
 		 * @see TreeNode
@@ -71,7 +77,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		public static <K extends Comparable<K>, E> TreeNode<K, E> createNilLeaf() {
 			TreeNode<K, E> treeNode = new TreeNode<K, E>(null);
 			treeNode.setLeftNode(null);
-			treeNode.setRightNode(null); 
+			treeNode.setRightNode(null);
 			treeNode.setColor(NodeColor.BLACK);
 			return treeNode;
 		}
@@ -101,6 +107,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 
 	/**
 	 * Left Rotate procedure which runs in O(1) time
+	 * 
 	 * @param T
 	 * @param x
 	 */
@@ -111,17 +118,17 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 			y.getLeftNode().setParentNode(x);
 		}
 		y.setParentNode(x.getParentNode());
-		if(x.getParentNode() == T.nil) {
+		if (x.getParentNode() == T.nil) {
 			T.root = y;
-		}else if(x == x.getParentNode().getLeftNode()) {
+		} else if (x == x.getParentNode().getLeftNode()) {
 			x.getParentNode().setLeftNode(y);
-		}else {
+		} else {
 			x.getParentNode().setRightNode(y);
 		}
 		y.setLeftNode(x);
 		x.setParentNode(y);
 	}
-	
+
 	/**
 	 * Right Rotate procedure which runs in O(1) time
 	 * @param T
