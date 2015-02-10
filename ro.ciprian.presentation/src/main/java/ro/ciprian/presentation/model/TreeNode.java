@@ -38,8 +38,9 @@ public class TreeNode<K extends Comparable<K>, T> implements
 	/** The reference to the parent node **/
 	private TreeNode<K, T> parentNode;
 
-	public TreeNode(T type) {
+	public TreeNode(K key,T type) {
 		this.type = type;
+		this.key = key;
 	}
 
 	public T getData() {

@@ -9,7 +9,7 @@ package ro.ciprian.presentation.exceptions;
  * @author Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)
  *
  */
-public class KeyNotFoundException extends Exception{
+public class KeyNotFoundException extends AbstractTreeMapException{
 
 	private static final long serialVersionUID = 3090114410174919635L;
 	private String message;

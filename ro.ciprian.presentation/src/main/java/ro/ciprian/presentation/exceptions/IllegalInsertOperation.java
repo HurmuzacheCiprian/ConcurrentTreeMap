@@ -9,7 +9,7 @@ package ro.ciprian.presentation.exceptions;
  * @author Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)
  *
  */
-public class IllegalInsertOperation extends Exception {
+public class IllegalInsertOperation extends AbstractTreeMapException {
 
 	private static final long serialVersionUID = -6449824493068262206L;
 	private String message;
