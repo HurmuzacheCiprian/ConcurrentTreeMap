@@ -14,7 +14,7 @@ import ro.ciprian.presentation.model.TreeNode;
  */
 public class ConcurrentTreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V>{
 	
-	/** The tree map **/
+	/** The tree map instance **/
 	private final TreeMap<K,V> treeMap = TreeMap.newInstance();
 	
 	/** The monitor object **/

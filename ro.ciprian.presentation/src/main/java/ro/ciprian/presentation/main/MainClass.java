@@ -22,9 +22,11 @@ public class MainClass {
 		treeMap.put(1, "oo");
 		treeMap.put(10, "a");
 		treeMap.put(22, "b");
-		treeMap.put(1511, "ss");
-		treeMap.put(33, "x");
+		treeMap.put(15, "ss");
+		treeMap.put(33, "xa");
 		treeMap.put(5, "acbdde");
+		treeMap.put(13, "xxxx");
+		treeMap.put(3, "final test");
 		
 		System.out.println(treeMap);
 	}

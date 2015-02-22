@@ -53,4 +53,11 @@ public interface TreeOperations<K extends Comparable<K>, V> {
 	 * @return
 	 */
 	public <E, T extends TreeNode<K,E>> E getMinKey();
+
+	/**
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public V get(K key);
 }

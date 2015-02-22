@@ -47,6 +47,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		nil = TreeNodeFactory.createNilLeaf();
 		root = nil;
 		root.setParentNode(nil);
+		nil.setParentNode(root);
 	}
 
 	/**
@@ -84,7 +85,6 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 			treeNode.setColor(NodeColor.BLACK);
 			return treeNode;
 		}
-
 	}
 
 	/**
@@ -128,41 +128,52 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	 */
 	private void fixInsert(TreeNode<K, V> newNode) {
 		while (newNode.getParentNode().getColor() == NodeColor.RED) {
-			if (newNode.getParentNode() == newNode.getParentNode().getParentNode().getLeftNode()) { // case 1
-				TreeNode<K, V> y = newNode.getParentNode().getParentNode().getRightNode();
+			if (newNode.getParentNode() == newNode.getParentNode()
+					.getParentNode().getLeftNode()) { // case 1
+				TreeNode<K, V> y = newNode.getParentNode().getParentNode()
+						.getRightNode();
 				if (y.getColor() == NodeColor.RED) {
 					newNode.getParentNode().setColor(NodeColor.BLACK);
 					y.setColor(NodeColor.BLACK);
-					newNode.getParentNode().getParentNode().setColor(NodeColor.RED);
+					newNode.getParentNode().getParentNode()
+							.setColor(NodeColor.RED);
 					newNode = newNode.getParentNode().getParentNode();
 				} else if (newNode == newNode.getParentNode().getRightNode()) { // case
 																				// 2
 					newNode = newNode.getParentNode();
 					leftRotate(this, newNode);
+				} else {
+					newNode.getParentNode().setColor(NodeColor.BLACK);
+					newNode.getParentNode().getParentNode()
+							.setColor(NodeColor.RED);
+					rightRotate(this, newNode.getParentNode().getParentNode());
 				}
-				newNode.getParentNode().setColor(NodeColor.BLACK);
-				newNode.getParentNode().getParentNode().setColor(NodeColor.RED);
-				rightRotate(this, newNode.getParentNode().getParentNode());
-			} else if (newNode.getParentNode() == newNode.getParentNode().getParentNode().getRightNode()) {
+			} else if (newNode.getParentNode() == newNode.getParentNode()
+					.getParentNode().getRightNode()) {
 				// do the else situation when the parent of parent is on the
 				// right subtree
-				TreeNode<K, V> y = newNode.getParentNode().getParentNode().getLeftNode();
+				TreeNode<K, V> y = newNode.getParentNode().getParentNode()
+						.getLeftNode();
 				if (y.getColor() == NodeColor.RED) {
 					newNode.getParentNode().setColor(NodeColor.BLACK);
 					y.setColor(NodeColor.BLACK);
-					newNode.getParentNode().getParentNode().setColor(NodeColor.RED);
+					newNode.getParentNode().getParentNode()
+							.setColor(NodeColor.RED);
 					newNode = newNode.getParentNode().getParentNode();
 				} else if (newNode == newNode.getParentNode().getLeftNode()) { // case
 																				// 2
 					newNode = newNode.getParentNode();
 					rightRotate(this, newNode);
+				} else {
+					newNode.getParentNode().setColor(NodeColor.BLACK);
+					newNode.getParentNode().getParentNode()
+							.setColor(NodeColor.RED);
+					leftRotate(this, newNode.getParentNode().getParentNode());
 				}
-				newNode.getParentNode().setColor(NodeColor.BLACK);
-				newNode.getParentNode().getParentNode().setColor(NodeColor.RED);
-				leftRotate(this, newNode.getParentNode().getParentNode());
 			}
 		}
 		this.root.setColor(NodeColor.BLACK);
+		this.nil.setParentNode(this.root);
 	}
 
 	@Override
@@ -187,13 +198,14 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 	private TreeNode<K, V> findNodeByKey(TreeNode<K, V> rootNode, K key) {
 		if (rootNode == this.nil) {
 			return null;
-		} 
+		}
 		if (rootNode.getKey().compareTo(key) == 0) {
 			return rootNode;
-		} 
+		}
 		if (rootNode.getKey().compareTo(key) < 0) {
 			return findNodeByKey(rootNode.getLeftNode(), key);
-		} if (rootNode.getKey().compareTo(key) > 0) {
+		}
+		if (rootNode.getKey().compareTo(key) > 0) {
 			return findNodeByKey(rootNode.getRightNode(), key);
 		}
 		return null;
@@ -271,7 +283,6 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractTree<K, V> {
 		sb.append("[");
 		StringBuilder toStringSb = getTreeData(sb, this.root);
 		sb.deleteCharAt(1);
-		sb.deleteCharAt(sb.length() - 1);
 		sb.append("]");
 		return toStringSb.toString();
 	}
